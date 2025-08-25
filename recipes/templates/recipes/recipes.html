@@ -23,7 +23,7 @@
                 <th>Ingredients</th>
                 <th>Cooking Time</th>
                 <th>Difficulty</th>
-                <th>Image</th>
+                <!-- <th>Image</th> -->
                 <th>Instructions</th>
             </tr>
         </thead>
@@ -34,7 +34,7 @@
                 <td>{{ recipe.ingredients }}</td>
                 <td>{{ recipe.cooking_time }} min</td>
                 <td>{{ recipe.difficulty|title }}</td>
-                <td><img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="100"></td>
+                <!-- <td><img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="100"></td> -->
                 <td><a href="{{ recipe.get_absolute_url }}">View Instructions</a></td>
             </tr>
             {% endfor %}
