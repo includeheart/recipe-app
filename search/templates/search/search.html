@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search</title>
+</head>
+<body>
+    <h1>Search</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Search</button>
+    </form>
+
+    {% if query is not None %}
+        <h2>Results for "{{ query }}"</h2>
+        {% if recipes %}
+            <table border="1" cellpadding="8" cellspacing="0">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Ingredients</th>
+                        <th>Cooking Time</th>
+                        <th>Difficulty</th>
+                        <th>Details</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for r in recipes %}
+                    <tr>
+                        <td><a href="{{ r.get_absolute_url }}">{{ r.name }}</a></td>
+                        <td>{{ r.ingredients }}</td>
+                        <td>{{ r.cooking_time }} min</td>
+                        <td>{{ r.difficulty|title }}</td>
+                        <td><a href="{{ r.get_absolute_url }}">View</a></td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
+            {# Optional: show the pandas-rendered HTML table for debugging/reference #}
+            {% if results_html %}
+                <h3>DataFrame view</h3>
+                <div>{{ results_html|safe }}</div>
+            {% endif %}
+        {% else %}
+            <p>No matching recipes.</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>

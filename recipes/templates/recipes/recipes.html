@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>List of Recipes</title>
+    </head>
+<body>
+    {% load static %}
+    <img src="{% static 'recipes/images/stock_photo_1.jpg' %}" alt="food stock photo" width="600" height="300">
+    <h1>Recipes</h1>
+    <div style="margin: 10px 0;">
+        <form method="post" action="{% url 'logout' %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Logout</button>
+        </form>
+    </div>
+    {% if recipes %}
+    <table border="1" cellpadding="8" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Ingredients</th>
+                <th>Cooking Time</th>
+                <th>Difficulty</th>
+                <th>Image</th>
+                <th>Instructions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td>
+                <td>{{ recipe.ingredients }}</td>
+                <td>{{ recipe.cooking_time }} min</td>
+                <td>{{ recipe.difficulty|title }}</td>
+                <td><img src="{{ recipe.image.url }}" alt="{{ recipe.name }}" width="100"></td>
+                <td><a href="{{ recipe.get_absolute_url }}">View Instructions</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+        <p>No recipes found.</p>
+    {% endif %}
+</body>
+</html>
