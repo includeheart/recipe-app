@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 
 def login_view(request):
     error_message = None
@@ -14,7 +14,7 @@ def login_view(request):
             user = authenticate(username=username, password=password)
             if user is not None:
                 login(request, user)
-                return redirect('')
+                return redirect('recipes:recipe-list')
             else:
                 error_message = 'ooops.. something went wrong'
 
@@ -27,3 +27,15 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     return redirect('login')
+
+def register_view(request):
+    form = UserCreationForm(request.POST or None)
+    if request.method == 'POST' and form.is_valid():
+        user = form.save()
+        login(request, user)
+        return redirect('recipes:recipe-list')
+
+    context = {
+        'form': form,
+    }
+    return render(request, 'auth/register.html', context)

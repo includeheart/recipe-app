@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contribute a Recipe</title>
+</head>
+<body>
+  <h1>Contribute a Recipe</h1>
+  <form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Save</button>
+  </form>
+  <p><a href="{% url 'recipes:recipe-list' %}">Back to recipes</a></p>
+</body>
+</html>

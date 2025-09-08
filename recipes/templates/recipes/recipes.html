@@ -7,8 +7,10 @@
     </head>
 <body>
     {% load static %}
-    <img src="{% static 'recipes/images/stock_photo_1.jpg' %}" alt="food stock photo" width="600" height="300">
+    <!-- <img src="{% static 'recipes/images/stock_photo_1.jpg' %}" alt="food stock photo" width="600" height="300"> -->
     <h1>Recipes</h1>
+    <div style="margin: 10px 0;">
+        <a href="{% url 'recipes:recipe-create' %}">Contribute a Recipe</a>
     <div style="margin: 10px 0;">
         <form method="post" action="{% url 'logout' %}" style="display:inline;">
             {% csrf_token %}
