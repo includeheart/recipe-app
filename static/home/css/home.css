@@ -1,0 +1,8 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 40px;
+  background-color: whitesmoke;
+}
+h1 { margin-bottom: 0.5rem; }
+a { color: #0a5a9c; text-decoration: none; }
+a:hover { text-decoration: underline; }
