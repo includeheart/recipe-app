@@ -8,8 +8,15 @@
   <link rel="stylesheet" href="{% static 'home/css/home.css' %}">
 </head>
 <body>
-  <h1>Welcome</h1>
-  <p><a href="{% url 'login' %}">Login</a> to view recipes.</p>
-  <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+  <div class="hero">
+    <div class="hero-text">
+      <h1>Welcome</h1>
+      <p><a href="{% url 'login' %}">Login</a> to view recipes.</p>
+      <p>Don't have an account? <a href="{% url 'register' %}">Register here</a>.</p>
+    </div>
+    <div class="hero-image">
+      <img src="{% static 'img/home-placeholder-img.svg' %}" alt="Placeholder">
+    </div>
+  </div>
 </body>
 </html>

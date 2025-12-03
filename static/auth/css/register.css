@@ -1,5 +1,9 @@
 body {
   font-family: Arial, sans-serif;
   margin: 40px;
-  background-color: whitesmoke;
+  background-color: rgb(80, 24, 24)
+}
+
+#error-message {
+  color: red;
 }
